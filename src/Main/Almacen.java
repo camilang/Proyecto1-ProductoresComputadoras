@@ -9,7 +9,7 @@ package Main;
  * @author MAURICIO MENDEZ
  */
 public class Almacen {
-    
+    public Compania compania;
     public int placaBase = 0;
     public int cpu = 0;
     public int ram =0;
