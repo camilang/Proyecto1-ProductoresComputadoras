@@ -116,7 +116,20 @@ public void salarioTotal(){
         this.running = false;
     }
 
- 
+    @Override
+    public void run(){
+        this.running = true;
+        while(this.running == true){
+            // Se suma salario, trabaja, y pasa un día.
+            try {             
+                salarioTotal();
+                Trabajo();
+                sleep(Compania.tiempoDia);
+            } catch (InterruptedException e) {
+                Logger.getLogger(Trabajadores.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+    }    
  
     
 }

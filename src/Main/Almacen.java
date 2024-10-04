@@ -19,6 +19,7 @@ public class Almacen {
     public int computadora = 0;
     public int computadoraTG= 0;
     
+    
     public boolean placaBaseFull(){
         return this.placaBase >= 25;
     } 
@@ -67,5 +68,10 @@ public class Almacen {
     public void reiniciarContadorComputadoras(){
         this.computadora = 0;
         this.computadoraTG = 0;
+    }
+    
+    
+    public Almacen (Compania compania){
+        this.compania = compania;
     }
 }
