@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  */
 public class ProjectM extends Thread{
     public Semaphore luzTrafico;
-    public String estado; /*Para saber cuando ve One piece y cuando trabaja*/
+    public String estado; //Para saber cuando ve One piece y cuando trabaja
     public Director director;
     public Compania compania;
     public int salarioAcumulado;
@@ -23,7 +23,7 @@ public class ProjectM extends Thread{
     public int falla=0;
     public int tiempoDia;
  
-    
+    //Constructor
     public ProjectM(int tiempoDia, Semaphore luzTrafico,Director director, Compania compania){
         this.tiempoDia= tiempoDia;
         this.luzTrafico = luzTrafico;
@@ -31,12 +31,13 @@ public class ProjectM extends Thread{
         this.director=director;
     }
     
+    //Funcion que define el pago del pm
     public void PagoProjectM(){
         this.salarioAcumulado+=40*24;
     }
     
    
-    
+    //Funcion que cambia su estado a ver anime y pierde dinero por su falla
     public void VeAnime() {
      int aux = 0;
      int mediahora = (tiempoDia/24)/2;
@@ -58,13 +59,14 @@ public class ProjectM extends Thread{
             }
         }
     }         
-    
+   
+    //Funcion de estado de trabajo
    public void Trabaja(){
         try{
             VeAnime();
             this.luzTrafico.acquire();
-            this.estado="Cambia contador";
-            Thread.sleep((tiempoDia/24)*8);
+            this.estado="Cambia el contador";
+            Thread.sleep((tiempoDia/24)*8); //8 horas que invierte cambiando el contador
             if(this.compania.contador.diasRestantes>0){
                 this.compania.contador.estado+=1;
                 this.compania.contador.tiempoRestante-=1;
@@ -77,6 +79,7 @@ public class ProjectM extends Thread{
         }       
     }
    
+   //Funcion para ejecutar el trabajo y el pago
    public void PagoTrabajo(){
        while(true){
            PagoProjectM();

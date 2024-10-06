@@ -14,13 +14,14 @@ import javax.swing.JOptionPane;
  * @author Camila Garcia
  */
 public class Compania {
+    //Variables de uso para definir valores
     public static int tiempoDia;
     public static int tipo;
     public int CostosO=0;
     public int ganaciasComputadoras=0;
     public int ganaciasTotales =0;
     public Contador contador;
-    
+    //Creación de semaforos
     public Semaphore placaBase = new Semaphore(1);
     public Semaphore cpu = new Semaphore(1);
     public Semaphore ram = new Semaphore(1);
@@ -29,6 +30,7 @@ public class Compania {
     public Semaphore partes = new Semaphore(1);
     public Semaphore contadorAcceso = new Semaphore(1);
   
+    //Creacion de clases y arrays para guardar la lista de productores de cada tipo
     public Almacen almacen;
     
     public Trabajadores[] productoresPB;
@@ -37,20 +39,21 @@ public class Compania {
     public Trabajadores[] productoresFuenteA;
     public Trabajadores[] productoresTG;
     
+    //Creacion de los demas trabajadores, ProjectM y director no es array ya que solo hay uno
     public Ensamblador[] ensamblador;
     
-    public ProjectM [] projectM;
+    public ProjectM  projectM;
     
     public Director director;
     
-    
+    //Constructor
     public Compania (int tiempoDia, int fechaLimite,int productoresPB, int productoresCPUS, int productoresRAM, int productoresFuenteA, int productoresTG, int ensamblador, int tipo){
         Compania.tiempoDia = tiempoDia;
-        Compania.tipo=tipo;
-        this.contador= new Contador (fechaLimite);
-        /*this.almacen= new Almacen(this);*/
+        Compania.tipo=tipo; //Tipo es la variable que define si es Dell o MSI
+        this.contador= new Contador (fechaLimite); //Contador para que llegue la fecha limite
+        this.almacen= new Almacen(this);
         
-        
+        //Se crea un array con los productores
         this.productoresPB= new Trabajadores [productoresPB];
         this.productoresCPUS = new Trabajadores [productoresCPUS];
         this.productoresRAM = new Trabajadores [productoresRAM];
@@ -58,7 +61,7 @@ public class Compania {
         this.productoresTG= new Trabajadores [productoresTG];
         this.ensamblador = new Ensamblador[ensamblador];
         
-        
+        //Se realiza varios for para que los productores empiecen a trabajar con .start()
         for(int i=0;i<this.productoresPB.length;i++){
             Trabajadores trabajador = new Trabajadores (0,this.almacen,this.placaBase);
             this.productoresPB[i]= trabajador;
@@ -94,15 +97,16 @@ public class Compania {
             this.ensamblador[i]= ensambladores;
             this.ensamblador[i].start();
         }
-        /*
+        
+        //Se instacia el director y el pm
         this.director= new Director (this, tiempoDia, this.contadorAcceso);
-        this.projectM =  new ProjectM(tiempoDia, this.contadorAcceso, this.director,this);*/
+        this.projectM =  new ProjectM(tiempoDia, this.contadorAcceso, this.director,this);
         
         
     }
     
     
-    
+    //Funcion para determinar cuanto dinero se da en la compañia de acuerdo a los salarios
     public void sumUtilidad(){
         int Costosalario=0;
         for (Trabajadores productoresPB: this.productoresPB){
@@ -128,16 +132,19 @@ public class Compania {
         for (Ensamblador ensamblador: this.ensamblador){
             Costosalario+=ensamblador.salario;
         }
-        /*
+        
         Costosalario+=this.director.salarioAcumulado;
-        Costosalario+= this.projectM.salarioAcumulado;*/
+        Costosalario+= this.projectM.salarioAcumulado;
         
         this.CostosO=Costosalario;
     }
     
+    //Funcion para saber cuanto es el dinero de ganancia de una computadora ya considerando el costo
     public void GananciasTotales(){
         this.ganaciasTotales=this.ganaciasComputadoras-this.CostosO;
     }
+    
+    //Funcion para tener las ganancias totales
     
     public void sumGanancias(int num){
         this.ganaciasComputadoras+=num;
@@ -145,12 +152,14 @@ public class Compania {
         this.GananciasTotales();
     }
     
+    //Funcion para definir el maximo de trabajadores
     public boolean TrabajadoresMax(){
         int trabajadoresMax =0;
         trabajadoresMax= this.productoresPB.length+this.productoresCPUS.length+this.productoresRAM.length+this.productoresFuenteA.length+this.productoresTG.length+this.ensamblador.length;
-        return 13> trabajadoresMax; /*Ultimo numero del carnet 1*/
+        return 12> trabajadoresMax; /*Ultimo numero del carnet 0*/
     }
     
+    //Funcion para añadir un trabajador de acuerdo a su que tipo de productor es 
     public void agregarTrabajador(int type){
         if (!this.TrabajadoresMax()) {
             JOptionPane.showMessageDialog(null, "ERROR! Solo se pueden hasta 13 trabajadores");
@@ -213,6 +222,51 @@ public class Compania {
             }
         }
     }
+    
+    //Funcion para borrar un trabajador de acuerdo a su tipo
+    public void borrarTrabajador(int type){
+        switch (type) {
+            case 0 ->                 {
+                    Trabajadores[] trabajadorEliminado = new Trabajadores[this.productoresPB.length-1];
+                    this.productoresPB[this.productoresPB.length-1].detenerHilo();
+                    System.arraycopy(this.productoresPB, 0, trabajadorEliminado, 0, this.productoresPB.length-1);
+                    this.productoresPB = trabajadorEliminado;
+                }
+            case 1 ->                 {
+                    Trabajadores[] trabajadorEliminado = new Trabajadores[this.productoresCPUS.length-1];
+                    this.productoresCPUS[this.productoresCPUS.length-1].detenerHilo();
+                    System.arraycopy(this.productoresCPUS, 0, trabajadorEliminado, 0, this.productoresCPUS.length-1);
+                    this.productoresCPUS = trabajadorEliminado;
+                }
+            case 2 ->                 {
+                    Trabajadores[] trabajadorEliminado = new Trabajadores[this.productoresRAM.length-1];
+                    this.productoresRAM[this.productoresRAM.length-1].detenerHilo();
+                    System.arraycopy(this.productoresRAM, 0, trabajadorEliminado, 0, this.productoresRAM.length-1);
+                    this.productoresRAM = trabajadorEliminado;
+                }
+            case 3 ->                 {
+                    Trabajadores[] trabajadorEliminado = new Trabajadores[this.productoresFuenteA.length-1];
+                    this.productoresFuenteA[this.productoresFuenteA.length-1].detenerHilo();
+                    System.arraycopy(this.productoresFuenteA, 0, trabajadorEliminado, 0, this.productoresFuenteA.length-1);
+                    this.productoresFuenteA = trabajadorEliminado;
+                }
+            case 4 ->                 {
+                    Trabajadores[] trabajadorEliminado = new Trabajadores[this.productoresTG.length-1];
+                    this.productoresTG[this.productoresTG.length-1].detenerHilo();
+                    System.arraycopy(this.productoresTG, 0, trabajadorEliminado, 0, this.productoresTG.length-1);
+                    this.productoresTG = trabajadorEliminado;
+                }
+            case 5 -> {
+                Ensamblador[] newAssemblers = new Ensamblador[this.ensamblador.length-1];
+                this.ensamblador[this.ensamblador.length-1].detenerHilo();
+                System.arraycopy(this.ensamblador, 0, newAssemblers, 0, this.ensamblador.length-1);
+                this.ensamblador = newAssemblers;
+            }
+            default -> {
+            }
+        }
+    }
+    
         
     
     
