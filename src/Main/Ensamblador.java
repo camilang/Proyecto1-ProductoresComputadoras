@@ -35,29 +35,11 @@ public class Ensamblador extends Thread{
     this.salario += 50*24;
     }
  // 0 placa base 1 cpu 2 ram 3 fuenteAlimentacion 4Tarjeta   
-//    tipo 0 Msi tipo 1 Dell 
+
+//    tipo 0 Dell Tipo 1 Msi
     public void vericarPartesComputadora(){
     // se marca verdadero solo si esta disponible la catidad de piezas necesarias en el almacen
         if (this.tipo == 1) {
-            if (this.almacen.placaBase > 0) {               
-                this.partesComputadoras[0] = true;
-            }
-            if (this.almacen.cpu > 4){               
-                this.partesComputadoras[1] = true;     
-            }
-            if (this.almacen.ram > 5){               
-                this.partesComputadoras[2] = true;     
-            }
-            if (this.almacen.fuenteAlimentacion > 4){                
-                this.partesComputadoras[3] = true;     
-            }    
-            if (this.contador > 2) {
-                if (this.almacen.tarjetaGrafica > 0) {
-                    this.partesComputadoras[4] = true;
-                    this.contador = 0;
-                }
-            }
-        } else if (this.tipo == 0) {
             if (this.almacen.placaBase > 1) {               
                 this.partesComputadoras[0] = true;
             }
@@ -72,6 +54,28 @@ public class Ensamblador extends Thread{
             }    
             if (this.contador > 5) {
                 if (this.almacen.tarjetaGrafica > 4) {
+                    this.partesComputadoras[4] = true;
+                    this.contador = 0;
+                }
+            }
+            
+            
+            
+        } else if (this.tipo == 0) {
+             if (this.almacen.placaBase > 0) {               
+                this.partesComputadoras[0] = true;
+            }
+            if (this.almacen.cpu > 4){               
+                this.partesComputadoras[1] = true;     
+            }
+            if (this.almacen.ram > 5){               
+                this.partesComputadoras[2] = true;     
+            }
+            if (this.almacen.fuenteAlimentacion > 4){                
+                this.partesComputadoras[3] = true;     
+            }    
+            if (this.contador > 2) {
+                if (this.almacen.tarjetaGrafica > 0) {
                     this.partesComputadoras[4] = true;
                     this.contador = 0;
                 }
@@ -98,17 +102,19 @@ public class Ensamblador extends Thread{
         }
         if (aux == 4 && this.partesComputadoras[4] == true){
             if (this.tipo == 1){
-                this.almacen.placaBase -= 1;
-                this.almacen.cpu -= 5;
-                this.almacen.ram -= 6;
-                this.almacen.fuenteAlimentacion -= 4;
-                this.almacen.tarjetaGrafica -= 1;   
-            } else {
                 this.almacen.placaBase -= 2;
                 this.almacen.cpu -= 3;
                 this.almacen.ram -= 4;
                 this.almacen.fuenteAlimentacion -= 6;
                 this.almacen.tarjetaGrafica -= 5; 
+            } else {
+                
+                
+                this.almacen.placaBase -= 1;
+                this.almacen.cpu -= 5;
+                this.almacen.ram -= 6;
+                this.almacen.fuenteAlimentacion -= 5;
+                this.almacen.tarjetaGrafica -= 1; 
                 
             }
             for (int i = 0; i < this.partesComputadoras.length; i++) {
@@ -118,15 +124,18 @@ public class Ensamblador extends Thread{
         } 
         else if (aux == 4){
             if (this.tipo == 1){
-                this.almacen.placaBase -= 1;
-                this.almacen.cpu -= 5;
-                this.almacen.ram -= 6;
-                this.almacen.fuenteAlimentacion -= 4;
-            } else {
+                
                 this.almacen.placaBase -= 2;
                 this.almacen.cpu -= 3;
                 this.almacen.ram -= 4;
                 this.almacen.fuenteAlimentacion -= 6;
+            } else {
+                
+                
+                this.almacen.placaBase -= 1;
+                this.almacen.cpu -= 5;
+                this.almacen.ram -= 6;
+                this.almacen.fuenteAlimentacion -= 5;
                 
             }
             for (int i = 0; i < this.partesComputadoras.length; i++) {
