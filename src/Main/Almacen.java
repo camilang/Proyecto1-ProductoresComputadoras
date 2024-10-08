@@ -19,27 +19,28 @@ public class Almacen {
     public int computadora = 0;
     public int computadoraTG= 0;
     
-    
+    // se establecen funciones para poder detectar cuando el almacen este lleno
     public boolean placaBaseFull(){
-        return this.placaBase >= 25;
+        return this.placaBase > 23;
     } 
     
     public boolean cpuFull(){
-        return this.cpu >= 20;
+        return this.cpu > 18;
     }
     
     public boolean ramFull(){
-        return this.ram >= 55;
+        return this.ram > 53;
     }
     
     public boolean fuenteAlimentacionFull(){
-        return this.fuenteAlimentacion >= 35;
+        return this.fuenteAlimentacion > 33;
     }
     
     public boolean tarjetaGraficaFull(){
-        return this.tarjetaGrafica >= 10;
+        return this.tarjetaGrafica > 8;
     }
     
+    // guardado de piezas en el almacen
     public void guardarPlacaBase(){
         this.placaBase += 1;
                
@@ -61,7 +62,7 @@ public class Almacen {
     }
     
     public void guardarTarjetaGrafica(){
-        this.placaBase += 1;
+        this.tarjetaGrafica += 1;
                
     }
     

@@ -14,7 +14,8 @@ public class RunProject {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Panel RunProject = new Panel();
+        RunProject.setVisible(true);
     }
     
 }
