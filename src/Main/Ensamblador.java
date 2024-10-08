@@ -30,7 +30,7 @@ public class Ensamblador extends Thread{
         this.semaforo = semaforo;
         this.tiempo = tiempo;
     }
-    
+    //salario del ensamblador por dia
     public void salarioTotal(){
     this.salario += 50*24;
     }
@@ -84,6 +84,8 @@ public class Ensamblador extends Thread{
     public void detenerHilo(){
         this.running = false;
     }    
+    //verificar el si estan todas las partes para ensamblar la computadora
+    //retormanos 1 si es una pc normla y 2 para una pc con tarjeta grafica
     
     public int ensamblarComputadora(){
         vericarPartesComputadora();
@@ -138,15 +140,18 @@ public class Ensamblador extends Thread{
         return 0;        
     }
     
+    // se gestiona el acceso al almacen 
     public int revisarAlmacen(){
         int respuesta = 0;
         try {
+            // se adquiere el semaforo
             this.semaforo.acquire();
             switch (ensamblarComputadora()) {
                 case 1 -> respuesta = 1;
                 case 2 -> respuesta = 2;
                 default -> respuesta = 0;
             }
+            // se libera el semaforo
             this.semaforo.release();
         } catch(InterruptedException e){
             Logger.getLogger(Trabajadores.class.getName()).log(Level.SEVERE, null, e);
@@ -154,6 +159,7 @@ public class Ensamblador extends Thread{
         return respuesta;
     }
     
+    // se guarda en el almacen las computadoras ensambladas
     public void trabajo(int tipo){
         boolean trabajando = true;
                 
@@ -203,12 +209,14 @@ public class Ensamblador extends Thread{
         this.running = true;
         while (this.running == true){
             try{
+                //sumamos el salario del dia 
                 salarioTotal();
+                //verifica si se puede ensamblar
                 int ensamblar = revisarAlmacen();
                 if (ensamblar != 0){
-                    trabajo(ensamblar);
+                    trabajo(ensamblar); //se ensambla la pc
                 }
-                sleep(this.tiempo);
+                sleep(this.tiempo); 
             } catch (InterruptedException e) {
                 Logger.getLogger(Trabajadores.class.getName()).log(Level.SEVERE, null, e);
             }           
