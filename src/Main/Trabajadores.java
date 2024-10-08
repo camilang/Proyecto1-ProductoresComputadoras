@@ -44,14 +44,15 @@ public class Trabajadores extends Thread{
         } else {
     
         }
-
+        
     }
     
     public void Trabajo() {
     this.diasTrabajados += 1;
     
     if (this.tipo == 0) { 
-        if (this.diasTrabajados > 3 && !this.almacen.placaBaseFull()) {
+    // Guarda en el almacen la placa base si alcanza los 2 dias de trabajo
+        if (this.diasTrabajados > 2 && !this.almacen.placaBaseFull()) {
             try {
                 this.semaforo.acquire();
                 this.almacen.guardarPlacaBase();
@@ -62,7 +63,7 @@ public class Trabajadores extends Thread{
             }
         }
     } else if (this.tipo == 1) {
-        if (this.diasTrabajados > 4 && !this.almacen.cpuFull()) {
+        if (this.diasTrabajados > 2 && !this.almacen.cpuFull()) {
             try {
                 this.semaforo.acquire();
                 this.almacen.guardarCpu();
@@ -95,7 +96,7 @@ public class Trabajadores extends Thread{
             }
         }
     } else if (this.tipo == 4) {
-        if (this.diasTrabajados > 2 && !this.almacen.tarjetaGraficaFull()) {
+        if (this.diasTrabajados > 3 && !this.almacen.tarjetaGraficaFull()) {
             try {
                 this.semaforo.acquire();
                 this.almacen.guardarTarjetaGrafica();
