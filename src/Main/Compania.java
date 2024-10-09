@@ -134,8 +134,13 @@ public class Compania {
             costoSalario += productoresTG.salarioAcumulado;
         }
         
+<<<<<<< HEAD
         for (Ensamblador ensambladores : this.ensambladores) {
             costoSalario += ensambladores.salarioAcumulado;
+=======
+        for (Ensamblador ensamblador: this.ensamblador){
+            Costosalario+=ensamblador.salarioAcumulado;
+>>>>>>> 1e812416a71107908be302f0cb042a38aed7177f
         }
         
         costoSalario += this.director.salarioAcumulado;
