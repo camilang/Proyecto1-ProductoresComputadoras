@@ -86,41 +86,49 @@ public class Ensamblador extends Thread{
                 aux += 1;
             }
         }
-        if (aux == 4 && this.partesComputadora[4] == true){
-            if (this.tipo == 1){
+        if (aux == 4 ){
+            if (this.tipo == 1 && this.almacen.computadora>2){
                 this.almacen.placaBase -= 2;
                 this.almacen.cpu -= 3;
                 this.almacen.ram -= 4;
                 this.almacen.fuenteAlimentacion -= 6;
                 this.almacen.tarjetaGrafica -= 5;   
-            } else {
+                
+                for (int i = 0; i < this.partesComputadora.length; i++) {
+                    this.partesComputadora[i] = false;
+                }
+            } else if (this.tipo == 0 && this.almacen.computadora>5) {
                 this.almacen.placaBase -= 1;
                 this.almacen.cpu -= 5;
                 this.almacen.ram -= 6;
                 this.almacen.fuenteAlimentacion -= 5;
                 this.almacen.tarjetaGrafica -= 1;
-            }
-            for (int i = 0; i < this.partesComputadora.length; i++) {
-                this.partesComputadora[i] = false;
+                
+                for (int i = 0; i < this.partesComputadora.length; i++) {
+                     this.partesComputadora[i] = false;
+                }
+           
             }
             return 2; 
-        } 
-        else if (aux == 4){
-            if (this.tipo == 1){
-                this.almacen.placaBase -= 2;
-                this.almacen.cpu -= 3;
-                this.almacen.ram -= 4;
-                this.almacen.fuenteAlimentacion -= 6;
-            } else {
-                this.almacen.placaBase -= 1;
-                this.almacen.cpu -= 5;
-                this.almacen.ram -= 6;
-                this.almacen.fuenteAlimentacion -= 5;
+        } else{
+            if (aux == 4){
+                if (this.tipo == 1){
+                    this.almacen.placaBase -= 2;
+                    this.almacen.cpu -= 3;
+                    this.almacen.ram -= 4;
+                    this.almacen.fuenteAlimentacion -= 6;
+                } else {
+                    this.almacen.placaBase -= 1;
+                    this.almacen.cpu -= 5;
+                    this.almacen.ram -= 6;
+                    this.almacen.fuenteAlimentacion -= 5;
             }
-            for (int i = 0; i < this.partesComputadora.length; i++) {
+                for (int i = 0; i < this.partesComputadora.length; i++) {
                 this.partesComputadora[i] = false;
             }
             return 1;
+            }
+            
         }
         for (int i = 0; i < this.partesComputadora.length; i++) {
             this.partesComputadora[i] = false;

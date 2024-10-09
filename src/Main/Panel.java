@@ -119,6 +119,7 @@ public class Panel extends javax.swing.JFrame {
             pmFaltas1.setText(Integer.toString(this.msi.projectM.faltas));
             computadorasListasEst1.setText(Integer.toString(this.msi.almacen.computadora));
             computadorasListaTG1.setText(Integer.toString(this.msi.almacen.computadoraTG));
+            
             ganancias1.setText(Integer.toString(this.msi.gananciaComputadora));
             dineroDescontadoPm1.setText(Integer.toString(this.msi.projectM.salarioPerdido));
             utilidad1.setText(Integer.toString(this.msi.gananciaTotal));
