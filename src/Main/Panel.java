@@ -89,20 +89,21 @@ public class Panel extends javax.swing.JFrame {
             estadoPM.setText(this.dell.projectM.estado);
             estadoDirector.setText(this.dell.director.estado);
             diasRestantes.setText(Integer.toString(this.dell.contador.diasRestantes));
-            pmFaltas.setText(Integer.toString(this.dell.projectM.falla));
+            pmFaltas.setText(Integer.toString(this.dell.projectM.faltas));
             computadorasListasEst.setText(Integer.toString(this.dell.almacen.computadora));
             computadorasListaTG.setText(Integer.toString(this.dell.almacen.computadoraTG));
-            ganancias.setText(Integer.toString(this.dell.ganaciasComputadoras));
-            dineroDescontadoPm.setText(Integer.toString(this.dell.projectM.salarioPerdido));
-            utilidad.setText(Integer.toString(this.dell.ganaciasTotales));
-            costos.setText(Integer.toString(this.dell.CostosO));
             
-            CantPPB.setText(Integer.toString(this.dell.productoresPB.length));
-            CantPCPU.setText(Integer.toString(this.dell.productoresCPUS.length));
-            CantPRAM.setText(Integer.toString(this.dell.productoresRAM.length));
+            ganancias.setText(Integer.toString(this.dell.gananciaComputadora));
+            dineroDescontadoPm.setText(Integer.toString(this.dell.projectM.salarioPerdido));
+            utilidad.setText(Integer.toString(this.dell.gananciaTotal));
+            costos.setText(Integer.toString(this.dell.costOperativo));
+            
+            CantPPB.setText(Integer.toString(this.dell.productoresPlacaBase.length));
+            CantPCPU.setText(Integer.toString(this.dell.productoresCpu.length));
+            CantPRAM.setText(Integer.toString(this.dell.productoresRam.length));
             CantPFA.setText(Integer.toString(this.dell.productoresFuenteA.length));
             CantPTG.setText(Integer.toString(this.dell.productoresTG.length));
-            CantEnsambladores.setText(Integer.toString(this.dell.ensamblador.length));
+            CantEnsambladores.setText(Integer.toString(this.dell.ensambladores.length));
             
            
             //Cambiar texto de interfaz en MSI
@@ -115,20 +116,20 @@ public class Panel extends javax.swing.JFrame {
             estadoPM1.setText(this.msi.projectM.estado);
             estadoDirector1.setText(this.msi.director.estado);
             diasRestantes1.setText(Integer.toString(this.msi.contador.diasRestantes));
-            pmFaltas1.setText(Integer.toString(this.msi.projectM.falla));
+            pmFaltas1.setText(Integer.toString(this.msi.projectM.faltas));
             computadorasListasEst1.setText(Integer.toString(this.msi.almacen.computadora));
             computadorasListaTG1.setText(Integer.toString(this.msi.almacen.computadoraTG));
-            ganancias1.setText(Integer.toString(this.msi.ganaciasComputadoras));
+            ganancias1.setText(Integer.toString(this.msi.gananciaComputadora));
             dineroDescontadoPm1.setText(Integer.toString(this.msi.projectM.salarioPerdido));
-            utilidad1.setText(Integer.toString(this.msi.ganaciasTotales));
-            costos1.setText(Integer.toString(this.msi.CostosO));
+            utilidad1.setText(Integer.toString(this.msi.gananciaTotal));
+            costos1.setText(Integer.toString(this.msi.costOperativo));
             
-            CantPPB1.setText(Integer.toString(this.msi.productoresPB.length));
-            CantPCPU1.setText(Integer.toString(this.msi.productoresCPUS.length));
-            CantPRAM1.setText(Integer.toString(this.msi.productoresRAM.length));
+            CantPPB1.setText(Integer.toString(this.msi.productoresPlacaBase.length));
+            CantPCPU1.setText(Integer.toString(this.msi.productoresCpu.length));
+            CantPRAM1.setText(Integer.toString(this.msi.productoresRam.length));
             CantPFA1.setText(Integer.toString(this.msi.productoresFuenteA.length));
             CantPTG1.setText(Integer.toString(this.msi.productoresTG.length));
-            CantEnsambladores1.setText(Integer.toString(this.msi.ensamblador.length));
+            CantEnsambladores1.setText(Integer.toString(this.msi.ensambladores.length));
         }
         
         
@@ -737,7 +738,7 @@ public class Panel extends javax.swing.JFrame {
         diasRestantes.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         diasRestantes.setForeground(new java.awt.Color(255, 255, 255));
         diasRestantes.setText("0");
-        jPanel15.add(diasRestantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 50, -1));
+        jPanel15.add(diasRestantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 60, -1));
 
         jLabel44.setFont(new java.awt.Font("Leelawadee UI", 1, 22)); // NOI18N
         jLabel44.setForeground(new java.awt.Color(255, 255, 255));
@@ -752,7 +753,7 @@ public class Panel extends javax.swing.JFrame {
         computadorasListaTG.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
         computadorasListaTG.setForeground(new java.awt.Color(255, 255, 255));
         computadorasListaTG.setText("0");
-        jPanel15.add(computadorasListaTG, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, 40, 30));
+        jPanel15.add(computadorasListaTG, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, 50, 30));
 
         computadorasListasEst.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
         computadorasListasEst.setForeground(new java.awt.Color(255, 255, 255));
@@ -784,7 +785,7 @@ public class Panel extends javax.swing.JFrame {
         ganancias.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
         ganancias.setForeground(new java.awt.Color(255, 255, 255));
         ganancias.setText("0");
-        jPanel22.add(ganancias, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 30, 20));
+        jPanel22.add(ganancias, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 60, 20));
 
         jLabel48.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         jLabel48.setForeground(new java.awt.Color(255, 255, 255));
@@ -794,7 +795,7 @@ public class Panel extends javax.swing.JFrame {
         utilidad.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
         utilidad.setForeground(new java.awt.Color(255, 255, 255));
         utilidad.setText("0");
-        jPanel22.add(utilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 40, -1));
+        jPanel22.add(utilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 50, -1));
 
         jLabel51.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         jLabel51.setForeground(new java.awt.Color(255, 255, 255));
@@ -809,7 +810,7 @@ public class Panel extends javax.swing.JFrame {
         costos.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
         costos.setForeground(new java.awt.Color(255, 255, 255));
         costos.setText("0");
-        jPanel22.add(costos, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 40, 20));
+        jPanel22.add(costos, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 50, 20));
 
         jLabel54.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
         jLabel54.setForeground(new java.awt.Color(255, 255, 255));
