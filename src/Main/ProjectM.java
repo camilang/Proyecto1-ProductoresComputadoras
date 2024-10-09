@@ -40,7 +40,7 @@ public class ProjectM extends Thread{
     //Funcion que cambia su estado a ver anime y pierde dinero por su falla
     public void VeAnime() {
      int aux = 0;
-     int mediahora = (tiempoDia/24)/2;
+     int mediahora = hora()/2;
 
      while (aux < 16){
          try {
@@ -66,7 +66,7 @@ public class ProjectM extends Thread{
             VeAnime();
             this.luzTrafico.acquire();
             this.estado="Cambia el contador";
-            Thread.sleep((tiempoDia/24)*8); //8 horas que invierte cambiando el contador
+            Thread.sleep(hora()*8); //8 horas que invierte cambiando el contador
             if(this.compania.contador.diasRestantes>0){
                 this.compania.contador.estado+=1;
                 this.compania.contador.tiempoRestante-=1;
@@ -79,13 +79,20 @@ public class ProjectM extends Thread{
         }       
     }
    
+   
+   public int hora(){
+       return tiempoDia/24;
+   }
    //Funcion para ejecutar el trabajo y el pago
-   public void PagoTrabajo(){
+   @Override
+   public void run(){
        while(true){
            PagoProjectM();
            Trabaja();
        }
    }
+   
+   
     
   
     

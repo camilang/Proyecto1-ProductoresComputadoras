@@ -52,11 +52,11 @@ public class Director extends Thread{
     //Funcion que registra la nueva ganancia de los  computadores enviados 
     public void EnviaComputadoras(){
         if (Compania.tipo==0){
-            this.compania.sumGanancias(this.compania.almacen.computadora*80000);
-            this.compania.sumGanancias(this.compania.almacen.computadoraTG*120000);    
+            this.compania.sumGanancias(this.compania.almacen.computadora * 80000);
+            this.compania.sumGanancias(this.compania.almacen.computadoraTG * 120000);    
         }else if (Compania.tipo==1){
-            this.compania.sumGanancias(this.compania.almacen.computadora*180000);
-            this.compania.sumGanancias(this.compania.almacen.computadoraTG*250000);  
+            this.compania.sumGanancias(this.compania.almacen.computadora * 180000);
+            this.compania.sumGanancias(this.compania.almacen.computadoraTG * 250000);  
         }
     }
     
@@ -69,16 +69,16 @@ public class Director extends Thread{
         try{
             if(this.compania.contador.tiempoRestante>0){
                 EstadoDeTrabajo();
-                Director.sleep((this.tiempoDia/24)*aleatorioNum);
+                Director.sleep(hora()*aleatorioNum);
                 EstadoVigilancia();
-                Director.sleep((long)((this.tiempoDia/24)*0.583));
+                Director.sleep((long)(hora()*0.583333));
                 EstadoDeTrabajo();
-                Director.sleep(((this.tiempoDia)-(this.tiempoDia/24))*aleatorioNum);  
+                Director.sleep(this.tiempoDia-hora()*aleatorioNum);  
             }else{
                 EstadoEnviandoComputadoras();
                 Director.sleep(this.tiempoDia);
                 this.EnviaComputadoras();
-                this.compania.almacen.reiniciarContadorComputadoras();
+                this.compania.almacen.reiniciarComputadoras();
                 this.luzTrafico.acquire();
                 this.compania.contador.reiniciar();
                 this.luzTrafico.release();
@@ -95,7 +95,17 @@ public class Director extends Thread{
             Trabaja();
             }
         }
-        
-        
     
+    public int hora(){
+        return this.tiempoDia/24;
+    }
+        
+    @Override
+    public void run(){
+        while (true){
+            PagoDirector();
+            Trabaja();
+        }
+        
+    }
 }
