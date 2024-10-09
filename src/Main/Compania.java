@@ -130,7 +130,7 @@ public class Compania {
         }
         
         for (Ensamblador ensamblador: this.ensamblador){
-            Costosalario+=ensamblador.salario;
+            Costosalario+=ensamblador.salarioAcumulado;
         }
         
         Costosalario+=this.director.salarioAcumulado;
