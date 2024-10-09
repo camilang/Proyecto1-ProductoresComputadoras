@@ -45,7 +45,6 @@ public class Director extends Thread{
         this.salarioAcumulado += 60*24;
     }
     
-<<<<<<< HEAD
     public void enviaCompu(){
         if (Compania.tipo == 0) {
             this.compania.sumaGanancias(this.compania.almacen.computadora * 80000);
@@ -76,41 +75,6 @@ public class Director extends Thread{
                 this.semaforo.acquire();
                     this.compania.contador.reiniciar();
                 this.semaforo.release();
-=======
-    //Funcion que registra la nueva ganancia de los  computadores enviados 
-    public void EnviaComputadoras(){
-        if (Compania.tipo==0){
-            this.compania.sumGanancias(this.compania.almacen.computadora * 80000);
-            this.compania.sumGanancias(this.compania.almacen.computadoraTG * 120000);    
-        }else if (Compania.tipo==1){
-            this.compania.sumGanancias(this.compania.almacen.computadora * 180000);
-            this.compania.sumGanancias(this.compania.almacen.computadoraTG * 250000);  
-        }
-    }
-    
-   
-    //Funcion de director se encarga de enviar  todos los computadoras ya creados a las distribuidoras y de sus estados cambiantes
-    public void Trabaja(){
-        Random aleatorio = new Random();
-        int aleatorioNum= aleatorio.nextInt(25);//0 del marcador mas 24 dias
-        
-        try{
-            if(this.compania.contador.tiempoRestante>0){
-                EstadoDeTrabajo();
-                Director.sleep(hora()*aleatorioNum);
-                EstadoVigilancia();
-                Director.sleep((long)(hora()*0.583333));
-                EstadoDeTrabajo();
-                Director.sleep(this.tiempoDia-hora()*aleatorioNum);  
-            }else{
-                EstadoEnviandoComputadoras();
-                Director.sleep(this.tiempoDia);
-                this.EnviaComputadoras();
-                this.compania.almacen.reiniciarComputadoras();
-                this.luzTrafico.acquire();
-                this.compania.contador.reiniciar();
-                this.luzTrafico.release();
->>>>>>> 1e812416a71107908be302f0cb042a38aed7177f
             }
         } catch (InterruptedException ex) {
             Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
@@ -129,26 +93,10 @@ public class Director extends Thread{
             pagoTrabajadores();
             work();
         }
-<<<<<<< HEAD
         
         
         
     }
     
  
-=======
-    
-    public int hora(){
-        return this.tiempoDia/24;
-    }
-        
-    @Override
-    public void run(){
-        while (true){
-            PagoDirector();
-            Trabaja();
-        }
-        
-    }
->>>>>>> 1e812416a71107908be302f0cb042a38aed7177f
 }

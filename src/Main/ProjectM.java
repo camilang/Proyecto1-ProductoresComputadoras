@@ -34,7 +34,6 @@ public class ProjectM extends Thread{
         this.salarioAcumulado += 40*24;
     }
     
-<<<<<<< HEAD
     
     public void veAnime() {
         int aux = 0;
@@ -73,49 +72,6 @@ public class ProjectM extends Thread{
         } catch (InterruptedException ex) {
             Logger.getLogger(ProjectM.class.getName()).log(Level.SEVERE, null, ex);
         }
-=======
-   
-    //Funcion que cambia su estado a ver anime y pierde dinero por su falla
-    public void VeAnime() {
-     int aux = 0;
-     int mediahora = hora()/2;
-
-     while (aux < 16){
-         try {
-             this.estado = "Ve One Piece";
-             ProjectM.sleep(mediahora);
-             if ("Revisa que esta haciendo el Product Manager".equals(this.director.estado)) {
-                 this.falla += 1;
-                 this.salarioAcumulado -= 100;
-                 this.salarioPerdido += 100;
-             }
-             this.estado = "Trabajando";
-             ProjectM.sleep(mediahora);
-             aux += 1;
-            }catch (InterruptedException ex) {
-             Logger.getLogger(ProjectM.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }         
-   
-    //Funcion de estado de trabajo
-   public void Trabaja(){
-        try{
-            VeAnime();
-            this.luzTrafico.acquire();
-            this.estado="Cambia el contador";
-            Thread.sleep(hora()*8); //8 horas que invierte cambiando el contador
-            if(this.compania.contador.diasRestantes>0){
-                this.compania.contador.estado+=1;
-                this.compania.contador.tiempoRestante-=1;
-                this.compania.contador.estado-=1; 
-            }
-            this.luzTrafico.release();
-                
-        }catch(InterruptedException ex){
-            Logger.getLogger(ProjectM.class.getName()).log(Level.SEVERE,null,ex);
-        }       
->>>>>>> 1e812416a71107908be302f0cb042a38aed7177f
     }
     
     public int hora(){
@@ -133,24 +89,4 @@ public class ProjectM extends Thread{
     } 
 
    
-<<<<<<< HEAD
-=======
-   
-   public int hora(){
-       return tiempoDia/24;
-   }
-   //Funcion para ejecutar el trabajo y el pago
-   @Override
-   public void run(){
-       while(true){
-           PagoProjectM();
-           Trabaja();
-       }
-   }
-   
-   
-    
-  
-    
->>>>>>> 1e812416a71107908be302f0cb042a38aed7177f
 }
