@@ -19,7 +19,7 @@ public class Contador extends Thread {
         this.diasRestantes = diasRestantes;
         this.fechaLimite = diasRestantes;
     }
-    
+    // reinicia los dias restantes
     public void reiniciar(){
         this.diasRestantes = this.fechaLimite;
     }
@@ -27,7 +27,7 @@ public class Contador extends Thread {
     @Override
     public void run(){
         while(true){
-            long tiempoTranscurrido = System.currentTimeMillis();
+            long tiempoTranscurrido = System.currentTimeMillis(); //devuelve el tiempo en milisegundo
             long tiempoActual = tiempoTranscurrido - this.tiempoInicio;
             this.tiempoRestante = Compania.tiempoDia - tiempoActual;
 

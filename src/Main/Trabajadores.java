@@ -28,23 +28,23 @@ public class Trabajadores extends Thread{
         
         
         switch (this.tipo) {
-            
+            // tipo 0 productor de placa base 
             case 0:
                 this.salario = 20;
                 break;
-            
+            // tipo 1 productor de cpu
             case 1:
                 this.salario = 26;
                 break;
-            
+            // tipo 2 productor de ram
             case 2:
                 this.salario = 40;
                 break;
-            
+            // tipo 3 productor de fuente
             case 3:
                 this.salario = 16;
                 break;
-            
+            // tipo 4 productor de tarjeta 
             case 4:
                 this.salario = 34;
                 break;
@@ -141,7 +141,7 @@ public class Trabajadores extends Thread{
             default -> {
             }
         }
-        // 0 para Guionista 1 guión cada 4 días
+        
             }
     
     public void detenerHilo(){

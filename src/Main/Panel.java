@@ -119,10 +119,10 @@ public class Panel extends javax.swing.JFrame {
             pmFaltas1.setText(Integer.toString(this.msi.projectM.faltas));
             computadorasListasEst1.setText(Integer.toString(this.msi.almacen.computadora));
             computadorasListaTG1.setText(Integer.toString(this.msi.almacen.computadoraTG));
-            ganancias1.setText(Integer.toString(this.msi.gananciaComputadora));
+            ganancias2.setText(Integer.toString(this.msi.gananciaComputadora));
             dineroDescontadoPm1.setText(Integer.toString(this.msi.projectM.salarioPerdido));
-            utilidad1.setText(Integer.toString(this.msi.gananciaTotal));
-            costos1.setText(Integer.toString(this.msi.costOperativo));
+            utilidad2.setText(Integer.toString(this.msi.gananciaTotal));
+            costos2.setText(Integer.toString(this.msi.costOperativo));
             
             CantPPB1.setText(Integer.toString(this.msi.productoresPlacaBase.length));
             CantPCPU1.setText(Integer.toString(this.msi.productoresCpu.length));
@@ -785,7 +785,7 @@ public class Panel extends javax.swing.JFrame {
         ganancias.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
         ganancias.setForeground(new java.awt.Color(255, 255, 255));
         ganancias.setText("0");
-        jPanel22.add(ganancias, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 60, 20));
+        jPanel22.add(ganancias, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 80, 20));
 
         jLabel48.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         jLabel48.setForeground(new java.awt.Color(255, 255, 255));
@@ -795,7 +795,7 @@ public class Panel extends javax.swing.JFrame {
         utilidad.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
         utilidad.setForeground(new java.awt.Color(255, 255, 255));
         utilidad.setText("0");
-        jPanel22.add(utilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 50, -1));
+        jPanel22.add(utilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 70, -1));
 
         jLabel51.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         jLabel51.setForeground(new java.awt.Color(255, 255, 255));
@@ -805,22 +805,22 @@ public class Panel extends javax.swing.JFrame {
         jLabel52.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
         jLabel52.setForeground(new java.awt.Color(255, 255, 255));
         jLabel52.setText("$");
-        jPanel22.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 20, 20));
+        jPanel22.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 20, 20));
 
         costos.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
         costos.setForeground(new java.awt.Color(255, 255, 255));
         costos.setText("0");
-        jPanel22.add(costos, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 50, 20));
+        jPanel22.add(costos, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 90, 20));
 
         jLabel54.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
         jLabel54.setForeground(new java.awt.Color(255, 255, 255));
         jLabel54.setText("$");
-        jPanel22.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 20, 20));
+        jPanel22.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 20, 20));
 
         jLabel46.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         jLabel46.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel46.setText("Utilidad total:  $");
-        jPanel22.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+        jLabel46.setText("Utilidad total:$");
+        jPanel22.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, -1, -1));
 
         jPanel23.setBackground(new java.awt.Color(50, 135, 193));
         jPanel23.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
@@ -869,7 +869,7 @@ public class Panel extends javax.swing.JFrame {
 
         jPanel22.add(jPanel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 470, 200, 90));
 
-        jPanel1.add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 460, 200, 120));
+        jPanel1.add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 460, 210, 120));
 
         jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Empleados-de-Dell.jpg"))); // NOI18N
         jPanel1.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 320, 200, 120));
@@ -1690,7 +1690,7 @@ public class Panel extends javax.swing.JFrame {
         ganancias2.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
         ganancias2.setForeground(new java.awt.Color(255, 255, 255));
         ganancias2.setText("0");
-        jPanel26.add(ganancias2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 30, 20));
+        jPanel26.add(ganancias2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 90, 20));
 
         jLabel115.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         jLabel115.setForeground(new java.awt.Color(255, 255, 255));
@@ -1700,7 +1700,7 @@ public class Panel extends javax.swing.JFrame {
         utilidad2.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
         utilidad2.setForeground(new java.awt.Color(255, 255, 255));
         utilidad2.setText("0");
-        jPanel26.add(utilidad2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 40, -1));
+        jPanel26.add(utilidad2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 90, -1));
 
         jLabel116.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         jLabel116.setForeground(new java.awt.Color(255, 255, 255));
@@ -1710,22 +1710,22 @@ public class Panel extends javax.swing.JFrame {
         jLabel117.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
         jLabel117.setForeground(new java.awt.Color(255, 255, 255));
         jLabel117.setText("$");
-        jPanel26.add(jLabel117, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 20, 20));
+        jPanel26.add(jLabel117, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 20, 20));
 
         costos2.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
         costos2.setForeground(new java.awt.Color(255, 255, 255));
         costos2.setText("0");
-        jPanel26.add(costos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 40, 20));
+        jPanel26.add(costos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 110, 20));
 
         jLabel118.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
         jLabel118.setForeground(new java.awt.Color(255, 255, 255));
         jLabel118.setText("$");
-        jPanel26.add(jLabel118, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 20, 20));
+        jPanel26.add(jLabel118, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 20, 20));
 
         jLabel119.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         jLabel119.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel119.setText("Utilidad total:  $");
-        jPanel26.add(jLabel119, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+        jLabel119.setText("Utilidad total:$");
+        jPanel26.add(jLabel119, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, -1, -1));
 
         jPanel27.setBackground(new java.awt.Color(50, 135, 193));
         jPanel27.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
@@ -1774,7 +1774,7 @@ public class Panel extends javax.swing.JFrame {
 
         jPanel26.add(jPanel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 470, 200, 90));
 
-        jPanel4.add(jPanel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 460, 200, 120));
+        jPanel4.add(jPanel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 460, 220, 120));
 
         jTabbedPane3.addTab("MSI", jPanel4);
 

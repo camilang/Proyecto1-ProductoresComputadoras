@@ -36,6 +36,7 @@ public class Ensamblador extends Thread{
     }
     
     public void verificarPartesComputadora(){
+        // si es tipo 1 se compruba que cumpla los requisitos de MSI y se marca en el arreglo
         if (this.tipo == 1) {
             if (this.almacen.placaBase > 1) {               
                 this.partesComputadora[0] = true;
@@ -55,7 +56,7 @@ public class Ensamblador extends Thread{
                     this.contador = 0;
                 }
             }
-        } else if (this.tipo == 0) {
+        } else if (this.tipo == 0) {// si es tipo 0 se compruba que cumpla los requisitos de DELL y se marca en el arreglo
             if (this.almacen.placaBase > 0) {                
                 this.partesComputadora[0] = true;
             }
@@ -79,8 +80,8 @@ public class Ensamblador extends Thread{
     }
     
     public int ensamblarComputadora(){
-        verificarPartesComputadora();
-        int aux = 0;
+        verificarPartesComputadora(); //se actrualiza el arreglo de partes de computadoras
+        int aux = 0; // cuenta si las 4 partes están listas para ensamblar
         for (int i = 0; i < 4; i++) {
             if (this.partesComputadora[i] == true){
                 aux += 1;
@@ -103,7 +104,7 @@ public class Ensamblador extends Thread{
             for (int i = 0; i < this.partesComputadora.length; i++) {
                 this.partesComputadora[i] = false;
             }
-            return 2; 
+            return 2; // retorna 2 si se puede ensamblar una computadora con tarjeta  grafica
         } 
         else if (aux == 4){
             if (this.tipo == 1){
@@ -120,12 +121,12 @@ public class Ensamblador extends Thread{
             for (int i = 0; i < this.partesComputadora.length; i++) {
                 this.partesComputadora[i] = false;
             }
-            return 1;
+            return 1; // retorna 1 si puede ensamblar una computadora normal
         }
         for (int i = 0; i < this.partesComputadora.length; i++) {
             this.partesComputadora[i] = false;
         }
-        return 0;
+        return 0; // 0 si no se puede ensamblar nada
     }
     
     public int revisarAlmacen(){
@@ -204,7 +205,7 @@ public class Ensamblador extends Thread{
             try{
                 pagoTrabajadores();
                 int ensamblador = revisarAlmacen();
-                if (ensamblador != 0){
+                if (ensamblador != 0){ // si es 1 2 ensambla una computadora
                     trabaja(ensamblador);
                 }
                 sleep(this.tiempo);

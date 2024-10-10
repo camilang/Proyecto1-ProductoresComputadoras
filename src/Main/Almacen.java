@@ -22,12 +22,12 @@ public class Almacen {
         public Almacen(Compania compania){
         this.compania = compania;
     }
-    
+    // se reinicia el contador de computadoras
     public void reiniciarComputadoras(){
         this.computadora = 0;
         this.computadoraTG = 0;
     }
-    
+    // se estblece el limite de componentes para cada tipo
     public boolean placaBaseFull(){
         return this.placaBase > 24;
     }
@@ -47,7 +47,7 @@ public class Almacen {
     public boolean tarjetaGraficaFull(){
         return this.tarjetaGrafica > 9;
     }
-    
+    //se guardan los compentes (la cantidad depende de la producción de cada trabajador)
     public void guardarPlacaBase(){
        
             this.placaBase += 1;
