@@ -14,7 +14,8 @@ import java.util.logging.Logger;
  * @author Camila Garcia
  */
 public class ProjectM extends Thread{
-   public Semaphore semaforo;
+   //Definicion de variables
+    public Semaphore semaforo;
     public String estado;
     public int salarioAcumulado = 0; 
     public int salarioPerdido = 0;
@@ -23,6 +24,7 @@ public class ProjectM extends Thread{
     public Director director;
     public Compania compania;
     
+    //Constructor
     public ProjectM (int tiempoDia, Semaphore semaforo, Director director, Compania compania) {
         this.director = director;
         this.tiempoDia = tiempoDia;
@@ -30,11 +32,12 @@ public class ProjectM extends Thread{
         this.compania = compania;
     }
     
+    //Funcion para determinar el salario acumulado del projectM
     public void pagoTrabajadores(){
         this.salarioAcumulado += 40*24;
     }
     
-    
+    //Funcion para determinar las faltas y salario perdido del PM cuando ve anime
     public void veAnime() {
         int aux = 0;
         int mediahora = hora()/2;
@@ -57,6 +60,7 @@ public class ProjectM extends Thread{
         }
     }         
     
+    //Funcion para hacer todas las labores de trabajo del PM
     public void trabaja(){
         try {
             veAnime();
@@ -74,6 +78,7 @@ public class ProjectM extends Thread{
         }
     }
     
+    //Funcion para determinar la duracion de una hora segun el parametro dado
     public int hora(){
         return tiempoDia/24;
     }

@@ -13,6 +13,7 @@ import java.util.logging.Logger;
  * @author Camila Garcia
  */
 public class Director extends Thread{
+    //Definicion de variables
    public Semaphore semaforo;
     public String estado;
     public int salarioAcumulado; 
@@ -21,6 +22,7 @@ public class Director extends Thread{
     public int tiempoDia;
     public Compania compania;
     
+    //Constructor de la clase
     public Director (Compania compania, int tiempoDia, Semaphore semaforo) {
         this.compania = compania;
         this.semaforo = semaforo;
@@ -29,6 +31,7 @@ public class Director extends Thread{
         
     }
     
+    //Estados de trabajo en el que se puede encontrar el Director
     public void estadoTrabajo(){
         this.estado = "Labores administrativas";
     }
@@ -41,10 +44,12 @@ public class Director extends Thread{
         this.estado = "Enviando computadoras";
     }
     
+    //Funcion para determinar el salario acumulado del Director
     public void pagoTrabajadores(){
         this.salarioAcumulado += 60*24;
     }
     
+    //Funcion para determinar la ganancia de acuerdo a las computadoras enviadas
     public void enviaCompu(){
         if (Compania.tipo == 0) {
             this.compania.sumaGanancias(this.compania.almacen.computadora * 80000);
@@ -55,7 +60,8 @@ public class Director extends Thread{
         }
     }
     
-    public void work(){
+    //Funcion para realizar todas las labores del trabajo
+    public void trabaja(){
         Random random = new Random();
         int aleatorio = random.nextInt(25);
 
@@ -81,7 +87,7 @@ public class Director extends Thread{
         }
     }
     
-    
+    //Funcion para sacar la duracion de la hora de acuerdo al parametro
     public int hora(){
         return this.tiempoDia/24;
     }
@@ -91,7 +97,7 @@ public class Director extends Thread{
     public void run(){
         while (true){
             pagoTrabajadores();
-            work();
+            trabaja();
         }
         
         

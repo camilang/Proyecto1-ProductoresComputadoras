@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
  * @author Camila Garcia
  */
 public class Compania {
+    //Definicion de variables
     public static int tiempoDia;    
     public Contador contador;
     
@@ -22,7 +23,7 @@ public class Compania {
     public int gananciaTotal = 0;
     
     public static int tipo;
-    
+    //Creacion de semaforos
     public Semaphore placaBase = new Semaphore(1);
     public Semaphore cpu = new Semaphore(1);
     public Semaphore ram = new Semaphore(1);
@@ -34,7 +35,7 @@ public class Compania {
     public Semaphore accesoContador = new Semaphore(1);
     
     public Almacen almacen;
-    
+    //Creacion de arreglos para los productores y los ensambladores
     public Trabajadores[] productoresPlacaBase;
     public Trabajadores[] productoresCpu;
     public Trabajadores[] productoresRam;
@@ -47,13 +48,14 @@ public class Compania {
     
     public Director director;
     
+    //Constructor
     public Compania( int tiempoDia, int fechaLimite, int productoresPlacaBase, int productoresCpu, int productoresRam, int productoresFuenteA, int productoresTG, int ensambladores, int tipo){
         Compania.tiempoDia = tiempoDia;
         Compania.tipo = tipo;
         this.contador = new Contador(fechaLimite);
         this.almacen = new Almacen(this);  
         
-      
+      //Se crean arreglos los arreglos
         this.productoresPlacaBase = new Trabajadores[productoresPlacaBase];
         this.productoresCpu = new Trabajadores[productoresCpu];
         this.productoresRam = new Trabajadores[productoresRam];
@@ -61,7 +63,7 @@ public class Compania {
         this.productoresTG = new Trabajadores[productoresTG];
         this.ensambladores = new Ensamblador[ensambladores];
         
-        
+        //Los productores empiezan a trabajar con la funcion .start()
         for (int i = 0; i < this.productoresPlacaBase.length; i++) {
             Trabajadores trabajador = new Trabajadores(0, this.almacen, this.placaBase);
             this.productoresPlacaBase[i] = trabajador;
@@ -97,7 +99,7 @@ public class Compania {
             this.ensambladores[i] = ensamblador;
             this.ensambladores[i].start();
         }
-        
+        //Se crea el director y projectM, hay uno solo de cada uno
         this.director = new Director(this, tiempoDia, this.accesoContador);
         this.projectM = new ProjectM(tiempoDia, this.accesoContador, this.director, this);
         
@@ -105,13 +107,14 @@ public class Compania {
         this.director.start();
         this.projectM.start();
     }     
-    
+    //Funcion para sacar la ganancia 
     public void sumaGanancias(int numero){
         this.gananciaComputadora += numero;
         this.sumaUtilidades();
         this.sumaGananciasTotales();
     }
     
+    //Funcion para determinar el costo de los salarios
     public void sumaUtilidades(){
         int costoSalario = 0;
         for (Trabajadores productoresPlacaBase : this.productoresPlacaBase) {
@@ -144,19 +147,22 @@ public class Compania {
         this.costOperativo = costoSalario;
     }
     
+    //Funcion que determina la ganancia que queda ya tomando en cuenta los costos operativos
     public void sumaGananciasTotales(){
         this.gananciaTotal = this.gananciaComputadora - this.costOperativo;
     }
     
+    //Funcion que define el maximo de trabajadores que puede sumarse entre los productores y ensambladores
     public boolean maxTrabajadores(){
         int maxTrabajadores = 0; 
         maxTrabajadores = this.productoresPlacaBase.length + this.productoresCpu.length + this.productoresRam.length + this.productoresFuenteA.length + this.productoresTG.length + this.ensambladores.length;
         return 12 > maxTrabajadores;
     }
     
+    //Funcion para agregar un trabajador
     public void agregarTrabajador(int tipo){
         if (!this.maxTrabajadores()) {
-            JOptionPane.showMessageDialog(null, "No se pueden tener más de 21 trabajadores.");
+            JOptionPane.showMessageDialog(null, "No se pueden tener más de 12 trabajadores."); //Tomando en cuenta el carnet de Mauricio
         } else {
             try {
                 switch (tipo) {
@@ -218,8 +224,8 @@ public class Compania {
         
     }
     
-    public void borrarTrabajador(int type){
-        switch (type) {
+    public void borrarTrabajador(int tipo){
+        switch (tipo) {
             case 0 ->                 {
                     Trabajadores[] nuevoTrabajador = new Trabajadores[this.productoresPlacaBase.length-1];
                     this.productoresPlacaBase[this.productoresPlacaBase.length-1].detenerHilo();
